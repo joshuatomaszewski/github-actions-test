@@ -16,6 +16,9 @@ jobs:
           TAG: ${{ github.event.inputs.tag }}
         run: |
           echo "Tag: $TAG"
+      - name: Get Workflow Calling Refs
+        run: |
+          echo ${{ github.event }}
       - name: Test image dependencies
         run: |
           aws --version
