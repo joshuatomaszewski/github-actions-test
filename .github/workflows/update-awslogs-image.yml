@@ -11,27 +11,32 @@ jobs:
   build-docker-image:
     runs-on: ubuntu-latest
     steps:
-      - name: Display input tag
-        env:
-          TAG: ${{ github.event.inputs.tag }}
+      - name: Testing Bash Conditional
         run: |
-          echo "Tag: $TAG"
-      - name: Get Workflow Calling Refs
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
-      - name: Test image dependencies
-        run: |
-          aws --version
-          jq --version
-          grep --version
-      - name: Checkout Code
-        uses: actions/checkout@v3
-      - name: Edit file
-        run: touch test-file.txt
-      - name: Commit change to repo
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: '*.txt'
-          message: 'Testing committing a change'
+          if [0 -eq 0]; then
+            echo "hello"
+          fi
+#      - name: Display input tag
+#        env:
+#          TAG: ${{ github.event.inputs.tag }}
+#        run: |
+#          echo "Tag: $TAG"
+#      - name: Get Workflow Calling Refs
+#        env:
+#          GITHUB_CONTEXT: ${{ toJson(github) }}
+#        run: |
+#          echo "$GITHUB_CONTEXT"
+#      - name: Test image dependencies
+#        run: |
+#          aws --version
+#          jq --version
+#          grep --version
+#      - name: Checkout Code
+#        uses: actions/checkout@v3
+#      - name: Edit file
+#        run: touch test-file.txt
+#      - name: Commit change to repo
+#        uses: EndBug/add-and-commit@v9
+#        with:
+#          add: '*.txt'
+#          message: 'Testing committing a change'
