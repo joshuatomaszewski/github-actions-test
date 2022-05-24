@@ -26,3 +26,12 @@ jobs:
           aws --version
           jq --version
           grep --version
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Edit file
+        run: touch test-file.txt
+      - name: Commit change to repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: '*.txt'
+          message: 'Testing committing a change'
