@@ -16,3 +16,8 @@ jobs:
           TAG: ${{ github.event.inputs.tag }}
         run: |
           echo "Tag: $TAG"
+      - name: Test image dependencies
+        run: |
+          aws --version
+          jq --version
+          grep --version
