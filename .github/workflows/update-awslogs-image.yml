@@ -16,6 +16,9 @@ jobs:
           if [ 0 -eq 0 ]; then
             echo "hello"
           fi
+          if [ 1 -eq 0 ]; then
+            echo "nope"
+          fi
 #      - name: Display input tag
 #        env:
 #          TAG: ${{ github.event.inputs.tag }}
