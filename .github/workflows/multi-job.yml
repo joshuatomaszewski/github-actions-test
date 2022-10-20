@@ -18,6 +18,7 @@ jobs:
   use-env-var:
     name: Use Env Variable
     runs-on: ubuntu-latest
+    needs: set-env-vars
     steps:
       - name: Use Var
         run: |
