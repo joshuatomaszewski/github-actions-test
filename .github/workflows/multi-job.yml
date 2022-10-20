@@ -1,0 +1,21 @@
+name: Multi Job Action
+
+on:
+  - push
+
+jobs:
+  set-env-var:
+    name: Set Env Variable
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Var
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+
+  use-env-var:
+    name: Use Env Variable
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Var
+        run: |
+          echo "${{ env.action_state }}"
