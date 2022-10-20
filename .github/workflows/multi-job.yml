@@ -7,10 +7,13 @@ jobs:
   set-env-var:
     name: Set Env Variable
     runs-on: ubuntu-latest
+    outputs:
+      imageName: ${{ steps.setVar.outputs.imageName }}
     steps:
+      - id: setVar
       - name: Set Var
         run: |
-          echo "action_state=yellow" >> $GITHUB_ENV
+          echo "imageName=hello" >> $GITHUB_OUTPUT
 
   use-env-var:
     name: Use Env Variable
@@ -18,4 +21,4 @@ jobs:
     steps:
       - name: Use Var
         run: |
-          echo "${{ env.action_state }}"
+          echo ${{needs.imageName.outputs.imageName}}
