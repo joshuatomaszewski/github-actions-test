@@ -22,4 +22,4 @@ jobs:
     steps:
       - name: Use Var
         run: |
-          echo ${{needs.imageName.outputs.imageName}}
+          echo ${{needs.set-env-var.outputs.imageName}}
