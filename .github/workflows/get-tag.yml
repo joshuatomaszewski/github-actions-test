@@ -1,0 +1,13 @@
+name: Get Tag
+on:
+  push:
+    tags: [ '*.*.*' ]
+
+jobs:
+  echo-tag:
+    name: Get Triggering Tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Triggering Tag
+        run: |
+          echo ${{ github.ref_name }}
