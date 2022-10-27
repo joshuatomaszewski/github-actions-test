@@ -1,0 +1,36 @@
+name: Deploy Production
+on:
+  push:
+    tags: [ '*.*.*' ]
+
+jobs:
+  build-push-docker-image:
+    name: Build and Push Docker Image
+    environment: prd
+    runs-on: ubuntu-latest
+    outputs:
+      ImageName: ${{ steps.ImageName.outputs.ImageName }}
+    steps:
+      - name: Build and Store Image Name
+        id: ImageName
+        run: |
+          export IMAGE_NAME="1234567890.dkr.ecr.us-east-1.amazonaws.com/repo-name:app-${{ github.ref_name }}"
+          echo "ImageName=$IMAGE_NAME" >> $GITHUB_OUTPUT
+
+  terraform:
+    environment: prd
+    name: Run Terraform Plan
+    needs: build-push-docker-image
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./.aws/terraform/env/prd
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Docker Image Name
+        run: |
+          echo ${{ needs.build-push-docker-image.outputs.ImageName }}
+          cat test.txt
+          sed -i "s|REPLACE_WITH_REAL_IMAGE_NAME|${{ needs.build-push-docker-image.outputs.ImageName }}|" test.txt
+          cat test.txt
