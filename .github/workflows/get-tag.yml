@@ -2,6 +2,7 @@ name: Get Tag
 on:
   push:
     tags: [ '*.*.*' ]
+    branches: main
 
 jobs:
   echo-tag:
@@ -10,4 +11,5 @@ jobs:
     steps:
       - name: Echo Triggering Tag
         run: |
-          echo ${{ github.ref_name }}
+          echo "Triggering Tag: ${{ github.ref_name }}"
+          echo "Triggering SHA: ${{ github.sha }}"
