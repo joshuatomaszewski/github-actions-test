@@ -1,0 +1,15 @@
+name: Get Tag
+on:
+  push:
+    tags: [ '*.*.*' ]
+    branches: main
+
+jobs:
+  echo-tag:
+    name: Get Triggering Tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Triggering Tag
+        run: |
+          echo "Triggering Tag: ${{ github.ref_name }}"
+          echo "Triggering SHA: ${{ github.sha }}"
