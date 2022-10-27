@@ -1,0 +1,45 @@
+name: Deploy new awslogs docker image to all environments
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to use for AWS Logs docker image. Must be unquie."
+        type: string
+        required: true
+
+jobs:
+  build-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing Bash Conditional
+        run: |
+          if [ 0 -eq 0 ]; then
+            echo "hello"
+          fi
+          if [ 1 -eq 0 ]; then
+            echo "nope"
+          fi
+#      - name: Display input tag
+#        env:
+#          TAG: ${{ github.event.inputs.tag }}
+#        run: |
+#          echo "Tag: $TAG"
+#      - name: Get Workflow Calling Refs
+#        env:
+#          GITHUB_CONTEXT: ${{ toJson(github) }}
+#        run: |
+#          echo "$GITHUB_CONTEXT"
+#      - name: Test image dependencies
+#        run: |
+#          aws --version
+#          jq --version
+#          grep --version
+#      - name: Checkout Code
+#        uses: actions/checkout@v3
+#      - name: Edit file
+#        run: touch test-file.txt
+#      - name: Commit change to repo
+#        uses: EndBug/add-and-commit@v9
+#        with:
+#          add: '*.txt'
+#          message: 'Testing committing a change'
