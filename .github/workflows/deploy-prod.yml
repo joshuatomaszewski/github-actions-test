@@ -22,6 +22,9 @@ jobs:
     name: Run Terraform Plan
     needs: build-push-docker-image
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./some/folder/name
     steps:
       - uses: actions/checkout@v3
 
