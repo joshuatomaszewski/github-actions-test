@@ -22,9 +22,6 @@ jobs:
     name: Run Terraform Plan
     needs: build-push-docker-image
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./.aws/terraform/env/prd
     steps:
       - uses: actions/checkout@v3
 
