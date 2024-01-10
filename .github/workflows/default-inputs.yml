@@ -12,9 +12,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Greet the named user
-        uses: ./.github/actions/action.yml
+        uses: ./.github/actions
         with:
           name: Bob
 
       - name: Greet the user without a name
-        uses: ./.github/actions/action.yml
+        uses: ./.github/actions

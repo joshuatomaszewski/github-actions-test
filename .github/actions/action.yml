@@ -1,5 +1,5 @@
 name: Test default environment variable
-description: test that a || will give a default value if no input is set
+description: "test that a || will give a default value if no input is set"
 
 inputs:
   name:
