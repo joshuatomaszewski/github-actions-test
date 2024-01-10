@@ -1,0 +1,17 @@
+name: Default Inputs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-default-inputs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Greet the named user
+        uses: ./.github/actions/action.yml
+        with:
+          name: Bob
+
+      - name: Greet the user without a name
+        uses: ./.github/actions/action.yml

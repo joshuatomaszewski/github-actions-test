@@ -1,0 +1,17 @@
+name: Test default environment variable
+description: test that a || will give a default value if no input is set
+
+inputs:
+  name:
+    type: string
+    required: false
+    description: name of user
+runs:
+  using: composite
+  steps:
+    - name: Say Hello
+      shell: bash
+      run: |
+        echo Hello $NAME
+      env:
+        NAME: ${{ inputs.name || 'no name' }}
